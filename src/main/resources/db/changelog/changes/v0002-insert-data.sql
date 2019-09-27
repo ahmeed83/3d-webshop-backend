@@ -15,3 +15,12 @@ VALUES ('23R565675', current_timestamp, null, 'LENOVO', 300, 20, 5);
 
 INSERT INTO threed.product(code, created_at, updated_at, description, price, quantity, category_id)
 VALUES ('4627SDJHSD', current_timestamp, null, 'HP', 2300, 90, 6);
+
+INSERT INTO threed.product(code, created_at, updated_at, description, price, quantity, category_id)
+VALUES ('2T656754', current_timestamp, null, 'GALAXY', 600, 150, 4);
+
+INSERT INTO threed.product(code, created_at, updated_at, description, price, quantity, category_id)
+VALUES ('23R565675', current_timestamp, null, 'LENOVO', 300, 20, 5);
+
+INSERT INTO threed.product(code, created_at, updated_at, description, price, quantity, category_id)
+VALUES ('4627SDJHSD', current_timestamp, null, 'HP', 2300, 90, 6);
