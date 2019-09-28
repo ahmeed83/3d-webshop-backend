@@ -24,3 +24,16 @@ VALUES ('23R565675', current_timestamp, null, 'LENOVO', 300, 20, 5);
 
 INSERT INTO threed.product(code, created_at, updated_at, description, price, quantity, category_id)
 VALUES ('4627SDJHSD', current_timestamp, null, 'HP', 2300, 90, 6);
+
+
+INSERT INTO threed.user(username, password, enabled, created_at)
+VALUES ('hayder@gmail.com', '123', true, current_timestamp);
+INSERT INTO threed.user(username, password, enabled, created_at)
+VALUES ('ahmed@gmail.com', '123', true, current_timestamp);
+
+INSERT INTO threed.user_roles (username, role)
+VALUES ('hayder@gmail.com', 'ROLE_USER');
+INSERT INTO threed.user_roles (username, role)
+VALUES ('hayder@gmail.com', 'ROLE_ADMIN');
+INSERT INTO threed.user_roles (username, role)
+VALUES ('ahmed@gmail.com', 'ROLE_USER');
