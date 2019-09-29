@@ -1,21 +1,21 @@
 package iq.threed.webshop.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 public class ProductDto {
 
-    private int id;
+    private Long id;
     private String code;
+    private String name;
+    private String category;
     private String description;
     private int quantity;
     private byte[] image;
     private double price;
     private Date lastUpdate;
 
-    private int categoryId;
+    private Long categoryId;
 }
