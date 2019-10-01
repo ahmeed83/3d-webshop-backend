@@ -13,7 +13,7 @@ public class ProductDto {
     private String category;
     private String description;
     private int quantity;
-    private byte[] image;
+    private Byte[] image;
     private double price;
     private Date lastUpdate;
 

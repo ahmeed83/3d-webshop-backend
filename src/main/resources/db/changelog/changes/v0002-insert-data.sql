@@ -28,24 +28,17 @@ VALUES ('LENOVO', '23R565675', 'LENOVO', 300, 20, 1, current_timestamp, null);
 INSERT INTO threed.product(name, code, description, price, quantity, category_id, created_at, updated_at)
 VALUES ('HP', '4627SDJHSD', 'HP', 2300, 90, 1, current_timestamp, null);
 
-INSERT INTO threed.product(name, code, description, price, quantity, category_id, created_at, updated_at)
-VALUES ('GALAXY 10', '2T656754', 'GALAXY 10', 600, 150, 3, current_timestamp, null);
-
-INSERT INTO threed.product(name, code, description, price, quantity, category_id, created_at, updated_at)
-VALUES ('LENOVO', '23R565675', 'LENOVO', 300, 20, 1, current_timestamp, null);
-
-INSERT INTO threed.product(name, code, description, price, quantity, category_id, created_at, updated_at)
-VALUES ('HP', '4627SDJHSD', 'HP', 2300, 90, 1, current_timestamp, null);
-
-
-INSERT INTO threed.user(username, password, enabled, created_at)
+INSERT INTO threed.user(user_name, password, enabled, created_at)
 VALUES ('hayder@gmail.com', '123', true, current_timestamp);
-INSERT INTO threed.user(username, password, enabled, created_at)
+INSERT INTO threed.user(user_name, password, enabled, created_at)
 VALUES ('ahmed@gmail.com', '123', true, current_timestamp);
 
-INSERT INTO threed.user_roles (username, role)
+INSERT INTO threed.user_roles (user_name, role_name)
 VALUES ('hayder@gmail.com', 'ROLE_USER');
-INSERT INTO threed.user_roles (username, role)
+INSERT INTO threed.user_roles (user_name, role_name)
 VALUES ('hayder@gmail.com', 'ROLE_ADMIN');
-INSERT INTO threed.user_roles (username, role)
+INSERT INTO threed.user_roles (user_name, role_name)
 VALUES ('ahmed@gmail.com', 'ROLE_USER');
+
+INSERT INTO threed.cart(created_at)
+VALUES (current_timestamp);

@@ -29,17 +29,36 @@ CREATE TABLE threed.product
 CREATE TABLE threed.user
 (
     id         BIGSERIAL PRIMARY KEY,
-    created_at TIMESTAMP           NOT NULL,
-    updated_at TIMESTAMP,
-    username   VARCHAR(255) UNIQUE NOT NULL,
+    user_name  VARCHAR(255) UNIQUE NOT NULL,
     password   VARCHAR(255)        NOT NULL,
-    enabled    BOOLEAN             NOT NULL DEFAULT true
+    enabled    BOOLEAN             NOT NULL DEFAULT true,
+    created_at TIMESTAMP           NOT NULL,
+    updated_at TIMESTAMP
 );
 
 CREATE TABLE threed.user_roles
 (
-    id       BIGSERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    role     VARCHAR(50)  NOT NULL,
-    FOREIGN KEY (username) REFERENCES threed.user (username)
+    id        BIGSERIAL PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    role_name VARCHAR(50)  NOT NULL,
+    FOREIGN KEY (user_name) REFERENCES threed.user (user_name)
+);
+
+CREATE TABLE threed.cart
+(
+    id         BIGSERIAL PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP
+);
+
+CREATE TABLE threed.cart_item
+(
+    id         BIGSERIAL PRIMARY KEY,
+    quantity   BIGINT    NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP,
+    cart_id    BIGINT    NOT NULL,
+    product_id BIGINT    NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES threed.product (id),
+    FOREIGN KEY (cart_id) REFERENCES threed.cart (id)
 )
