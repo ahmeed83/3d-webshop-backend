@@ -18,4 +18,8 @@ public class ShoppingCardService {
     public Optional<ShoppingCardEntity> getShoppingCard(Long shoppingCardId) {
         return shoppingCardRepository.findById(shoppingCardId);
     }
+
+    public void deleteShoppingCard(final Long shoppingCartId) {
+        shoppingCardRepository.deleteById(shoppingCartId);
+    }
 }

@@ -26,7 +26,7 @@ public class ShoppingCardController {
         return shoppingCardService.getShoppingCard(1L);
     }
 
-    @PostMapping
+    @PostMapping("/add-item")
     public void addItemToShoppingCard(final @RequestBody ShoppingCardItemDto inputShoppingCardDto) {
         shoppingCardItemService.addItemToShoppingCardCard(inputShoppingCardDto);
     }
