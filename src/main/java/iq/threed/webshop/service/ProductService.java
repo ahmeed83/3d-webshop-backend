@@ -1,59 +1,100 @@
 package iq.threed.webshop.service;
 
 import iq.threed.webshop.dto.ProductDto;
-import iq.threed.webshop.entity.CategoryEntity;
 import iq.threed.webshop.entity.ProductEntity;
-import iq.threed.webshop.repository.CategoryRepository;
 import iq.threed.webshop.repository.ProductRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Product service.
+ */
 @Service
 public class ProductService {
 
+    /**
+     * Model Mapper.
+     */
+    private final ModelMapper modelMapper;
+    /**
+     * Product Repository.
+     */
     private final ProductRepository productRepository;
-    private final CategoryRepository categoryRepository;
 
-    public ProductService(final ProductRepository productRepository, final CategoryRepository categoryRepository) {
-        this.productRepository = productRepository;
-        this.categoryRepository = categoryRepository;
+    /**
+     * Constructor.
+     *
+     * @param productRepositoryVal productRepository
+     * @param modelMapperVal       modelMapper
+     */
+    public ProductService(final ProductRepository productRepositoryVal, final ModelMapper modelMapperVal) {
+        this.productRepository = productRepositoryVal;
+        this.modelMapper = modelMapperVal;
     }
 
-    public List<ProductDto> getProducts() {
-        return createProductFromENtity();
+    /**
+     * get all products.
+     *
+     * @return all prodcuts from the db
+     */
+    public final List<ProductDto> getProducts() {
+        return createProductFromEntity();
     }
 
-    public Optional<ProductEntity> getProduct(final Long productId) {
+    /**
+     * Get one products.
+     *
+     * @param productId productId
+     * @return one prodcut from the db
+     */
+    public final Optional<ProductEntity> getProduct(final Long productId) {
         return productRepository.findById(productId);
     }
 
-    public ProductEntity saveProduct(final ProductEntity inputProductEntity) {
-        return productRepository.save(inputProductEntity);
+    /**
+     * Save one product.
+     *
+     * @param productDto productDto
+     */
+    public final void saveProduct(final ProductDto productDto) {
+        final ProductEntity productEntity = modelMapper.map(productDto, ProductEntity.class);
+        productEntity.setCreatedAt(LocalDateTime.now());
+        productRepository.save(modelMapper.map(productDto, ProductEntity.class));
     }
 
-    public void deleteProduct(final Long productId) {
+    /**
+     * Delete one product.
+     *
+     * @param productId productId
+     */
+    public final void deleteProduct(final Long productId) {
         productRepository.deleteById(productId);
     }
 
-    private List<ProductDto> createProductFromENtity() {
+    /**
+     * Create a Product DTO from product entities.
+     *
+     * @return productsDtos
+     */
+    private List<ProductDto> createProductFromEntity() {
         final List<ProductEntity> products = productRepository.findAll();
         final List<ProductDto> productsDtos = new ArrayList<>();
-        for (ProductEntity product : products) {
-            ProductDto productDto = new ProductDto();
-            productDto.setId(product.getId());
-            productDto.setCode(product.getCode());
-            productDto.setName(product.getName());
-            productDto.setPrice(product.getPrice());
-            productDto.setQuantity(product.getQuantity());
-            productDto.setDescription(product.getDescription());
-            productDto.setCategoryId(product.getCategoryId());
-            Optional<CategoryEntity> categoryName = categoryRepository.findById(product.getCategoryId());
-            productDto.setCategory(categoryName.get().getName());
+
+        products.forEach(product -> {
+            ProductDto productDto = ProductDto.builder()
+                    .imageName(product.getImageName()).code(product.getCode()).name(product.getName())
+                    .price(product.getPrice()).quantity(product.getQuantity()).description(product.getDescription())
+                    .categoryId(product.getCategoryId()).build();
+
+//            Optional<CategoryEntity> categoryName = categoryRepository.findById(product.getCategoryId());
+//            productDto.setCategory(categoryName.get().getName());
             productsDtos.add(productDto);
-        }
+        });
         return productsDtos;
     }
 }

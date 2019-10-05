@@ -19,7 +19,7 @@ CREATE TABLE threed.product
     name        VARCHAR(255)     NOT NULL,
     code        VARCHAR(255)     NOT NULL,
     description VARCHAR(600)     NOT NULL,
-    image       BYTEA,
+    image_name  VARCHAR(255),
     price       DOUBLE PRECISION NOT NULL,
     quantity    BIGINT           NOT NULL,
     category_id BIGINT           NOT NULL,

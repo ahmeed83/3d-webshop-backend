@@ -1,21 +1,47 @@
 package iq.threed.webshop.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
-
+/**
+ * Product DTO class.
+ *
+ * @author @Ahmed Aziz
+ * @version 1.1
+ */
 @Data
+@Builder
 public class ProductDto {
-
+    /**
+     * Product id.
+     */
     private Long id;
-    private String code;
+    /**
+     * Image name.
+     */
+    private String imageName;
+    /**
+     * Product name.
+     */
     private String name;
-    private String category;
+    /**
+     * Product text.
+     */
+    private String code;
+    /**
+     * Product description.
+     */
     private String description;
-    private int quantity;
-    private Byte[] image;
+    /**
+     * Product price.
+     */
     private double price;
-    private Date lastUpdate;
-
+    /**
+     * Product quantity.
+     */
+    private int quantity;
+    /**
+     * Category id.
+     */
     private Long categoryId;
 }
