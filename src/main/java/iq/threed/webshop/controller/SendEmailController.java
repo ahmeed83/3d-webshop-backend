@@ -1,7 +1,7 @@
 package iq.threed.webshop.controller;
 
 import iq.threed.webshop.dto.OrderDto;
-import iq.threed.webshop.service.ShoppingCardService;
+import iq.threed.webshop.service.ShoppingCartService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SendEmailController {
 
     private final JavaMailSender javaMailSender;
-    private final ShoppingCardService shoppingCardService;
+    private final ShoppingCartService shoppingCartService;
 
-    public SendEmailController(final JavaMailSender javaMailSender, final ShoppingCardService shoppingCardService) {
+    public SendEmailController(final JavaMailSender javaMailSender, final ShoppingCartService shoppingCartService) {
         this.javaMailSender = javaMailSender;
-        this.shoppingCardService = shoppingCardService;
+        this.shoppingCartService = shoppingCartService;
     }
 
     @PostMapping
@@ -29,7 +29,7 @@ public class SendEmailController {
         msg.setSubject("I ROOOOOCK!");
         msg.setText("Order id is " + orderDto.getShoppingCartId() +
                 " User id is " + orderDto.getUserId());
-        shoppingCardService.deleteShoppingCard(orderDto.getShoppingCartId());
+        shoppingCartService.deleteShoppingCart(orderDto.getShoppingCartId());
         javaMailSender.send(msg);
     }
 }

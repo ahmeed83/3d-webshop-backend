@@ -1,6 +1,5 @@
 package iq.threed.webshop;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -24,22 +23,12 @@ public class WebShopApplication {
     }
 
     /**
-     * Bean that being used to map dto to entity and via versa.
-     *
-     * @return ModelMapper
-     */
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
-
-    /**
      * Bean that been used for incrementing values.
      *
      * @return AtomicLong
      */
     @Bean
-    public AtomicLong atomicLong() {
+    public final AtomicLong atomicLong() {
         return new AtomicLong();
     }
 }
