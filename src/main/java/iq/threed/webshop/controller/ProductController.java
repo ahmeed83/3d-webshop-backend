@@ -2,7 +2,6 @@ package iq.threed.webshop.controller;
 
 import iq.threed.webshop.dto.ProductDto;
 import iq.threed.webshop.entity.CategoryEntity;
-import iq.threed.webshop.entity.ProductEntity;
 import iq.threed.webshop.service.CategoryService;
 import iq.threed.webshop.service.ProductService;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -71,10 +69,10 @@ public class ProductController {
      * Rest call to get one products by its ID.
      *
      * @param productId productId
-     * @return productEntity
+     * @return ProductDto
      */
     @GetMapping("/{productId}")
-    public final Optional<ProductEntity> getProduct(final @PathVariable Long productId) {
+    public final ProductDto getProduct(final @PathVariable Long productId) {
         return productService.getProduct(productId);
     }
 
@@ -101,7 +99,7 @@ public class ProductController {
         ProductDto productDto = ProductDto.builder().imageName(imageName).code(code)
                 .name(name).price(Double.parseDouble(price)).quantity(Integer.parseInt(quantity))
                 .description(description).categoryId(Long.valueOf(categoryId)).build();
-        productService.saveProduct(productDto);
+        productService.saveProduct(productDto, image);
     }
 
     /**
