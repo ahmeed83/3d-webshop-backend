@@ -41,6 +41,10 @@ public class ProductDto {
      */
     private int quantity;
     /**
+     * Category name.
+     */
+    private String categoryName;
+    /**
      * Category id.
      */
     private Long categoryId;
