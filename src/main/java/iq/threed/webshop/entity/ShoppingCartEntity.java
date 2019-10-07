@@ -11,13 +11,19 @@ import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * ShoppingCart Entity.
+ */
 @Entity
 @Getter
 @Setter
 @Table(name = "cart")
-public class ShoppingCardEntity extends AuditModel {
+public class ShoppingCartEntity extends AuditModel {
 
+    /**
+     * shoppingCart item entities.
+     */
     @JsonManagedReference
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    private Set<ShoppingCardItemEntity> shoppingCardItemEntities = new HashSet<>();
+    private Set<ShoppingCartItemEntity> shoppingCartItemEntities = new HashSet<>();
 }
