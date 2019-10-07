@@ -28,7 +28,7 @@ public class WebShopApplication {
      * @return AtomicLong
      */
     @Bean
-    public final AtomicLong atomicLong() {
+    public AtomicLong atomicLong() {
         return new AtomicLong();
     }
 }
