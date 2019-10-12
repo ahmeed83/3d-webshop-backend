@@ -52,9 +52,7 @@ public class ProductService {
      * @param productRepositoryVal productRepository
      * @param categoryRepository   categoryRepository
      */
-    public ProductService(
-            final ProductRepository productRepositoryVal,
-            final CategoryRepository categoryRepository) {
+    public ProductService(final ProductRepository productRepositoryVal, final CategoryRepository categoryRepository) {
         this.productRepository = productRepositoryVal;
         this.categoryRepository = categoryRepository;
     }
@@ -97,7 +95,7 @@ public class ProductService {
         byte[] bytes;
         try {
             bytes = image.getBytes();
-            Path path = Paths.get(imageDir + productDto.getImageName());
+            Path path = Paths.get(System.getProperty("user.dir") + imageDir + productDto.getImageName());
             Files.write(path, bytes);
         } catch (IOException e) {
             //TODO: add proper exception handling

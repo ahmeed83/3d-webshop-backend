@@ -3,6 +3,7 @@ package iq.threed.webshop.mapper;
 import iq.threed.webshop.dto.ProductDto;
 import iq.threed.webshop.entity.ProductEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -22,6 +23,7 @@ public interface ProductMapper {
      * @param productEntity productEntity
      * @return productDto
      */
+    @Mapping(target = "categoryName", source = "name")
     ProductDto toProductDto(ProductEntity productEntity);
 
     /**
@@ -30,5 +32,7 @@ public interface ProductMapper {
      * @param productDto productDto
      * @return productEntity
      */
+    @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
     ProductEntity toProductEntity(ProductDto productDto);
 }
