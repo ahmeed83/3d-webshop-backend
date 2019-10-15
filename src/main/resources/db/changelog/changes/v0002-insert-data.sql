@@ -46,10 +46,10 @@ VALUES ('11.jpg', 'LENOVO', '23R565675', 'LENOVO', 300, 20, 1, current_timestamp
 INSERT INTO threed.product(image_name, name, code, description, price, quantity, category_id, created_at, updated_at)
 VALUES ('12.jpg', 'HP', '4627SDJHSD', 'HP', 2300, 90, 1, current_timestamp, null);
 
-INSERT INTO threed.user(user_name, password, enabled, created_at)
-VALUES ('hayder@gmail.com', '123', true, current_timestamp);
-INSERT INTO threed.user(user_name, password, enabled, created_at)
-VALUES ('ahmed@gmail.com', '123', true, current_timestamp);
+INSERT INTO threed.user(user_name, user_password, enabled, created_at, updated_at)
+VALUES ('hayder@gmail.com', '123', true, current_timestamp, null);
+INSERT INTO threed.user(user_name, user_password, enabled, created_at, updated_at)
+VALUES ('ahmed@gmail.com', '123', true, current_timestamp, null);
 
 INSERT INTO threed.user_roles (user_name, role_name)
 VALUES ('hayder@gmail.com', 'ROLE_USER');

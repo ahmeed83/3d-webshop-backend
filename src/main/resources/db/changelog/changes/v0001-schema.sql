@@ -28,12 +28,12 @@ CREATE TABLE threed.product
 
 CREATE TABLE threed.user
 (
-    id         BIGSERIAL PRIMARY KEY,
-    user_name  VARCHAR(255) UNIQUE NOT NULL,
-    password   VARCHAR(255)        NOT NULL,
-    enabled    BOOLEAN             NOT NULL DEFAULT true,
-    created_at TIMESTAMP           NOT NULL,
-    updated_at TIMESTAMP
+    id            BIGSERIAL PRIMARY KEY,
+    user_name     VARCHAR(255) UNIQUE NOT NULL,
+    user_password VARCHAR(255)        NOT NULL,
+    enabled       BOOLEAN             NOT NULL DEFAULT true,
+    created_at    TIMESTAMP           NOT NULL,
+    updated_at    TIMESTAMP
 );
 
 CREATE TABLE threed.user_roles
