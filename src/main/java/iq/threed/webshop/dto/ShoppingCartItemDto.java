@@ -1,13 +1,11 @@
 package iq.threed.webshop.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
  * Shopping Cart Item Dto.
  */
 @Data
-@AllArgsConstructor
 public class ShoppingCartItemDto {
 
     /**
